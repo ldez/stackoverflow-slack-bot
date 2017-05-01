@@ -51,16 +51,17 @@ image::https://cloud.githubusercontent.com/assets/5674651/25589901/a3124e4a-2eae
 }
 ----
 
-- `tags`: name of the tags to track (separate by `;`),
-- `so.apiBaseURL`: URL of the StackOverflow API.
-- `so.dayBack`: number of days previous now use for create the first query.
-- `slack.apiBaseUrl`: URL of Slack API.
-- `slack.token`: Slack token, only for dev purpose. DON'T USE IN PRODUCTION.
-- `slack.channel`: Name of the channel to publish. (must start with `#`)
-- `slack.botName`: your bot account name.
-- `slack.icons.xxx`: emoji for each situation. (can be blank.)
-- `lastEndFileName`: name of file use for store the last query date.
-- `debug`: if `true`, display the Slack payload without send it.
+// [horizontal]
+tags:: name of the tags to track (separate by `;`),
+so.apiBaseURL:: URL of the StackOverflow API.
+so.dayBack:: number of days previous now use for create the first query.
+slack.apiBaseUrl:: URL of Slack API.
+slack.token:: Slack token, only for dev purpose. DON'T USE IN PRODUCTION.
+slack.channel:: Name of the channel to publish. (must start with `#`)
+slack.botName:: your bot account name.
+slack.icons.xxx:: emoji for each situation. (can be blank.)
+lastEndFileName:: name of file use for store the last query date.
+debug:: if `true`, display the Slack payload without send it.
 
 
 IMPORTANT: In production, use environment variable to set your Slack token (`SLACK_API_TOKEN`).
