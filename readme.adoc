@@ -1,3 +1,13 @@
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
 = StackOverflow Slack Integration
 
 This is a basic script to keep track a tag on StackOverflow and push accurate links to Slack.
