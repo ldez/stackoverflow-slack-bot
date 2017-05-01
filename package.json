@@ -1,0 +1,24 @@
+{
+  "name": "bot-so-to-slack",
+  "version": "1.0.0",
+  "description": "Bot: StackOverflow to Slack",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ldez/stackoverflow-slack-bot"
+  },
+  "keywords": [
+    "stackoverflow",
+    "slack",
+    "bot"
+  ],
+  "author": "ldez",
+  "license": "MIT",
+  "dependencies": {
+    "html-entities": "^1.2.1",
+    "request": "^2.81.0"
+  }
+}

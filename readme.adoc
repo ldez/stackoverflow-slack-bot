@@ -1,0 +1,59 @@
+= StackOverflow Slack Integration
+
+This is a basic script to keep track a tag on StackOverflow and push accurate links to Slack.
+
+image::https://cloud.githubusercontent.com/assets/5674651/25589901/a3124e4a-2eae-11e7-838c-13c80c69d2f8.png[slackoverbot]
+
+== How to use
+
+- Make sure link:https://nodejs.org[Node] is installed.
+- Run `npm install`.
+- Add your configuration to `config.json`
+- Let a cron-job run `npm run start` every 15 minutes (StackOverflow quota is 300 requests by day)
+
+.config.json
+[source, json]
+----
+{
+  "tags": "tag1;tag2",
+  "so": {
+    "apiBaseURL": "https://api.stackexchange.com/2.2",
+    "dayBack": 1,
+  },
+  "slack": {
+    "apiBaseUrl": "https://[your_team_name].slack.com/api/",
+    "token": "[your_token]",
+    "channel": "#random",
+    "botName": "[your_bot_name]",
+    "icons": {
+      "newActivity": ":trackball:",
+      "topic": ":speaking_head_in_silhouette:",
+      "askedQuestion": ":speech_balloon:",
+      "revisedQuestion": ":pencil:",
+      "revisedAnswer": ":pencil:",
+      "answerAccepted": ":ok_hand:",
+      "postedAnswer": ":left_speech_bubble:",
+      "comment": ":grey_question:"
+    }
+  },
+  "lastEndFileName": "lastend",
+  "debug": false
+}
+----
+
+- `tags`: name of the tags to track (separate by `;`),
+- `so.apiBaseURL`: URL of the StackOverflow API.
+- `so.dayBack`: number of days previous now use for create the first query.
+- `slack.apiBaseUrl`: URL of Slack API.
+- `slack.token`: Slack token, only for dev purpose. DON'T USE IN PRODUCTION.
+- `slack.channel`: Name of the channel to publish. (must start with `#`)
+- `slack.botName`: your bot account name.
+- `slack.icons.xxx`: emoji for each situation. (can be blank.)
+- `lastEndFileName`: name of file use for store the last query date.
+- `debug`: if `true`, display the Slack payload without send it.
+
+
+IMPORTANT: In production, use environment variable to set your Slack token (`SLACK_API_TOKEN`).
+
+
+Thanks to link:https://github.com/cwi-swat[@cwi-swat] for link:https://github.com/cwi-swat/stackoverflow-slack-plugin[inspiration].
