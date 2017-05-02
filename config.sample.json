@@ -1,0 +1,25 @@
+{
+  "tags": "tag1;tag2",
+  "so": {
+    "apiBaseURL": "https://api.stackexchange.com/2.2",
+    "dayBack": 1
+  },
+  "slack": {
+    "apiBaseUrl": "https://TEAM.slack.com/api/",
+    "token": "",
+    "channel": "#slackoverflow",
+    "botName": "SlackOverflowBot",
+    "icons": {
+      "newActivity": ":trackball:",
+      "topic": ":speaking_head_in_silhouette:",
+      "askedQuestion": ":speech_balloon:",
+      "revisedQuestion": ":pencil:",
+      "revisedAnswer": ":pencil:",
+      "answerAccepted": ":ok_hand:",
+      "postedAnswer": ":left_speech_bubble:",
+      "comment": ":grey_question:"
+    }
+  },
+  "lastEndFileName": "lastend",
+  "debug": false
+}
