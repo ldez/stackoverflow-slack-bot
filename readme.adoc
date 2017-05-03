@@ -10,6 +10,8 @@ endif::[]
 
 = StackOverflow Slack Integration
 
+image:https://travis-ci.org/ldez/stackoverflow-slack-bot.svg?branch=master["Build Status", link="https://travis-ci.org/ldez/stackoverflow-slack-bot"]
+
 This is a basic script to keep track a tag on StackOverflow and push accurate links to Slack.
 
 image::https://cloud.githubusercontent.com/assets/5674651/25589901/a3124e4a-2eae-11e7-838c-13c80c69d2f8.png[slackoverbot]
