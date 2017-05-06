@@ -6,30 +6,7 @@ const config = require('./config');
 const entities = new Entities();
 
 const currentTime = Math.round(Date.now() / 1000);
-
-if (!fs.existsSync(config.lastEndFileName)) {
-  console.log(`No ${config.lastEndFileName} file, making one.`);
-  fs.writeFileSync(config.lastEndFileName, currentTime - (24 * 60 * 60 * config.so.dayBack));
-}
-
-const encoding = {
-  encoding: 'utf8'
-}
-const lastTime = parseInt(fs.readFileSync(config.lastEndFileName, encoding), 10);
-
-function getJSON(target, success, error) {
-  request({
-    uri: target,
-    gzip: true
-  }, function(err, response, body) {
-    if (!err && response.statusCode == 200) {
-      success(JSON.parse(body), response, body);
-    } else {
-      console.log('get failed: ', target);
-      error(err, response, body);
-    }
-  });
-}
+const lastTime = getLastTime();
 
 const questionURL = `${config.so.apiBaseURL}/questions?order=desc&sort=activity&tagged=${encodeURIComponent(config.tags)}&site=stackoverflow`;
 getJSON(questionURL, processQuestions, handleError);
@@ -221,6 +198,37 @@ function getAnswerLink(answerId) {
 
 function getCommentLink(questionId, answerId, commentId) {
   return `http://stackoverflow.com/questions/${questionId}/${answerId}#comment${commentId}_${answerId}`;
+}
+
+function getLastTime() {
+  let lastTime;
+  if (fs.existsSync(config.lastEndFileName)) {
+    const encoding = {
+      encoding: 'utf8'
+    }
+    lastTime = parseInt(fs.readFileSync(config.lastEndFileName, encoding), 10);
+  } else {
+    if (!fs.existsSync(config.lastEndFileName)) {
+      console.log(`No ${config.lastEndFileName} file, making one.`);
+      lastTime = currentTime - (24 * 60 * 60 * config.so.dayBack);
+      fs.writeFileSync(config.lastEndFileName, lastTime);
+    }
+  }
+  return lastTime;
+}
+
+function getJSON(target, success, error) {
+  request({
+    uri: target,
+    gzip: true
+  }, function(err, response, body) {
+    if (!err && response.statusCode == 200) {
+      success(JSON.parse(body), response, body);
+    } else {
+      console.log('get failed: ', target);
+      error(err, response, body);
+    }
+  });
 }
 
 function handleError(err, response, body) {
