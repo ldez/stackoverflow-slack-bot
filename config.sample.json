@@ -2,7 +2,9 @@
   "tags": "tag1;tag2",
   "so": {
     "apiBaseURL": "https://api.stackexchange.com/2.2",
-    "dayBack": 1
+    "dayBack": 1,
+    "hourBack": 0,
+    "minuteBack": 0
   },
   "slack": {
     "apiBaseUrl": "https://TEAM.slack.com/api/",

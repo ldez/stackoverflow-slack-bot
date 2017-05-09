@@ -210,7 +210,8 @@ function getLastTime() {
   } else {
     if (!fs.existsSync(config.lastEndFileName)) {
       console.log(`No ${config.lastEndFileName} file, making one.`);
-      lastTime = currentTime - (24 * 60 * 60 * config.so.dayBack);
+      let timeBack = 60 * (config.so.minuteBack || 0) + 60 * 60 * (config.so.hourBack || 0) + 24 * 60 * 60 * (config.so.dayBack || 0);
+      lastTime = currentTime - timeBack;
       fs.writeFileSync(config.lastEndFileName, lastTime);
     }
   }

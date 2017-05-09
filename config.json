@@ -2,7 +2,9 @@
   "tags": "traefik;træfik",
   "so": {
     "apiBaseURL": "https://api.stackexchange.com/2.2",
-    "dayBack": 1
+    "dayBack": 1,
+    "hourBack": 0,
+    "minuteBack": 15
   },
   "slack": {
     "apiBaseUrl": "https://traefik.slack.com/api/",
