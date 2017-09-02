@@ -1,4 +1,5 @@
 {
+  "serverPort": 4000,
   "tags": "traefik;træfik",
   "so": {
     "apiBaseURL": "https://api.stackexchange.com/2.2",
@@ -22,5 +23,5 @@
     }
   },
   "lastEndFileName": "lastend",
-  "debug": false
+  "dryRun": false
 }

@@ -51,7 +51,7 @@ image::https://cloud.githubusercontent.com/assets/5674651/25589901/a3124e4a-2eae
     }
   },
   "lastEndFileName": "lastend",
-  "debug": false
+  "dryRun": false
 }
 ----
 
@@ -67,7 +67,7 @@ slack.channel:: Name of the channel to publish. (must start with `#`)
 slack.botName:: your bot account name.
 slack.icons.xxx:: emoji for each situation. (can be blank.)
 lastEndFileName:: name of file use for store the last query date.
-debug:: if `true`, display the Slack payload without send it.
+dryRun:: if `true`, display the Slack payload without send it.
 
 
 IMPORTANT: In production, use environment variable to set your Slack token (`SLACK_API_TOKEN`).

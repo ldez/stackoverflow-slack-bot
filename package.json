@@ -1,10 +1,11 @@
 {
-  "name": "bot-so-to-slack",
+  "name": "slackoverflow-bot",
   "version": "1.0.0",
   "description": "Bot: StackOverflow to Slack",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js"
+    "start": "node main.js",
+    "serve": "node src/server.js"
   },
   "repository": {
     "type": "git",

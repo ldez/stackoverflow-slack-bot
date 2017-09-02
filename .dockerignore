@@ -1,0 +1,16 @@
+# Projects files
+.git
+.gitignore
+.editorconfig
+.travis.yml
+notes.md
+readme.adoc
+lastend
+config.json
+config.sample.json
+
+Dockerfile
+
+# Node
+node_modules/
+npm-debug.log
