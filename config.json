@@ -23,5 +23,5 @@
     }
   },
   "lastEndFileName": "lastend",
-  "dryRun": false
+  "dryRun": true
 }

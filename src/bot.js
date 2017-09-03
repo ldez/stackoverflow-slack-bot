@@ -212,16 +212,25 @@ module.exports = function start() {
       const encoding = {
         encoding: 'utf8'
       };
-      lastTime = parseInt(fs.readFileSync(config.lastEndFileName, encoding), 10);
-    } else {
-      if (!fs.existsSync(config.lastEndFileName)) {
-        console.log(`No ${config.lastEndFileName} file, making one.`);
-        let timeBack = 60 * (config.so.minuteBack || 0) + 60 * 60 * (config.so.hourBack || 0) + 24 * 60 * 60 * (config.so.dayBack || 0);
-        lastTime = currentTime - timeBack;
-        fs.writeFileSync(config.lastEndFileName, lastTime);
+      content = fs.readFileSync(config.lastEndFileName, encoding)
+      if (content) {
+        lastTime = parseInt(content, 10);
+      } else {
+        lastTime = saveLastTime()
       }
+    } else {
+        console.log(`No ${config.lastEndFileName} file, making one.`);
+        lastTime = saveLastTime()
     }
     return lastTime;
+  }
+
+  function saveLastTime(){
+      const timeBack = 60 * (config.so.minuteBack || 0) + 60 * 60 * (config.so.hourBack || 0) + 24 * 60 * 60 * (config.so.dayBack || 0);
+      const lastTime = currentTime - timeBack;
+      fs.writeFileSync(config.lastEndFileName, lastTime);
+
+      return lastTime
   }
 
   function getJSON(target, success, error) {
