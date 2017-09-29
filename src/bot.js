@@ -150,6 +150,7 @@ module.exports = function start() {
         text: makeSlackMessage(soActivities),
         unfurl_links: false,
         username: config.slack.botName,
+        icon_emoji: config.slack.botIcon,
         as_user: false,
         token: getToken(),
         channel: config.slack.channel

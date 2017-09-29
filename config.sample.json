@@ -11,6 +11,7 @@
     "token": "",
     "channel": "#slackoverflow",
     "botName": "SlackOverflowBot",
+    "botIcon": ":robot:",
     "icons": {
       "newActivity": ":trackball:",
       "topic": ":speaking_head_in_silhouette:",

@@ -11,6 +11,7 @@
     "apiBaseUrl": "https://traefik.slack.com/api/",
     "channel": "C57JV6CAE",
     "botName": "Bender",
+    "botIcon": ":bender:",
     "icons": {
       "newActivity": ":trackball:",
       "topic": ":speaking_head_in_silhouette:",

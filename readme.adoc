@@ -41,6 +41,7 @@ image::https://cloud.githubusercontent.com/assets/5674651/25589901/a3124e4a-2eae
     "token": "[your_token]",
     "channel": "#random",
     "botName": "[your_bot_name]",
+    "botIcon": "[your_bot_icon]",
     "icons": {
       "newActivity": ":trackball:",
       "topic": ":speaking_head_in_silhouette:",
@@ -67,6 +68,7 @@ slack.apiBaseUrl:: URL of Slack API.
 slack.token:: Slack token, only for dev purpose. DON'T USE IN PRODUCTION.
 slack.channel:: Name of the channel to publish. (must start with `#`)
 slack.botName:: your bot account name.
+slack.botIcon:: your bot emoji icon. (can be blank.)
 slack.icons.xxx:: emoji for each situation. (can be blank.)
 lastEndFileName:: name of file use for store the last query date.
 dryRun:: if `true`, display the Slack payload without send it.
