@@ -6,7 +6,7 @@ const port = config.serverPort || 80;
 
 const requestHandler = (request, response) => {
   bot();
-  response.end('Done!');
+  response.end('StackOverflow bot: done!\n');
 };
 
 const server = http.createServer(requestHandler);
