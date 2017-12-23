@@ -253,6 +253,6 @@ module.exports = function start() {
     console.error(err);
     console.error(response);
     // console.error(body);
-    process.exit(1);
+    // process.exit(1);
   }
 };
