@@ -5,8 +5,10 @@ const config = require('../config');
 
 const entities = new Entities();
 
+const { site } = config.so
 
-const questionURL = `${config.so.apiBaseURL}/questions?order=desc&sort=activity&tagged=${encodeURIComponent(config.tags)}&site=stackoverflow`;
+const siteUrl = site === 'stackoverflow' ? 'stackoverflow.com' : `${site}.stackexchange.com`
+const questionURL = `${config.so.apiBaseURL}/questions?order=desc&sort=activity&tagged=${encodeURIComponent(config.tags)}&site=${site}`;
 
 module.exports = function start() {
   const currentTime = Math.round(Date.now() / 1000);
@@ -38,7 +40,7 @@ module.exports = function start() {
   function processTimeline(soActivities) {
     if (Object.keys(soActivities).length) {
       const questionIds = Object.keys(soActivities).join(';');
-      const timelineURL = `${config.so.apiBaseURL}/questions/${questionIds}/timeline?site=stackoverflow`;
+      const timelineURL = `${config.so.apiBaseURL}/questions/${questionIds}/timeline?site=${site}`;
       getJSON(timelineURL, (timeline) => pTimeline(timeline, soActivities), handleError);
     }
   }
@@ -89,7 +91,7 @@ module.exports = function start() {
 
   function processAnswers(soActivities, checkQuestions) {
     const questionIds = Object.keys(checkQuestions).join(';');
-    const answerURL = `${config.so.apiBaseURL}/questions/${questionIds}/answers?fromdate=${lastTime}&todate=${currentTime}&order=desc&sort=activity&site=stackoverflow`;
+    const answerURL = `${config.so.apiBaseURL}/questions/${questionIds}/answers?fromdate=${lastTime}&todate=${currentTime}&order=desc&sort=activity&site=${site}`;
     getJSON(answerURL, (answers) => pAnswers(answers, soActivities, checkQuestions), handleError);
   }
 
@@ -106,7 +108,7 @@ module.exports = function start() {
   }
 
   function makeSlackMessage(soActivities) {
-    let slackMessage = `${config.slack.icons.newActivity} New StackOverflow activity on the <http://stackoverflow.com/questions/tagged/${config.tags.replace(';', '|')} Tag>:\n\n`;
+    let slackMessage = `${config.slack.icons.newActivity} New StackOverflow activity on the <http://${siteUrl}/questions/tagged/${config.tags.replace(';', '|')} Tag>:\n\n`;
 
     slackMessage += Object.keys(soActivities)
       .map(key => soActivities[key])
@@ -200,11 +202,11 @@ module.exports = function start() {
   }
 
   function getAnswerLink(answerId) {
-    return `http://stackoverflow.com/a/${answerId}`;
+    return `http://${siteUrl}/a/${answerId}`;
   }
 
   function getCommentLink(questionId, answerId, commentId) {
-    return `http://stackoverflow.com/questions/${questionId}/${answerId}#comment${commentId}_${answerId}`;
+    return `http://${siteUrl}/questions/${questionId}/${answerId}#comment${commentId}_${answerId}`;
   }
 
   function getLastTime() {

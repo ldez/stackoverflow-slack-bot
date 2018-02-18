@@ -32,6 +32,7 @@ image::https://cloud.githubusercontent.com/assets/5674651/25589901/a3124e4a-2eae
   "tags": "tag1;tag2",
   "so": {
     "apiBaseURL": "https://api.stackexchange.com/2.2",
+    "site": "stackoverflow",
     "dayBack": 1,
     "hourBack": 0,
     "minuteBack": 0
@@ -61,6 +62,7 @@ image::https://cloud.githubusercontent.com/assets/5674651/25589901/a3124e4a-2eae
 // [horizontal]
 tags:: name of the tags to track (separate by `;`),
 so.apiBaseURL:: URL of the StackOverflow API.
+so.site:: name of stackexchange network site (stackoverflow, math, physics).
 so.minuteBack:: number of minutes previous now, use for create the first query.
 so.hourBack:: number of hours previous now, use for create the first query.
 so.dayBack:: number of days previous now, use for create the first query.
