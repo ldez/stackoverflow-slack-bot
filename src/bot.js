@@ -42,7 +42,10 @@ module.exports = function start() {
   function processTimeline(soActivities) {
     if (Object.keys(soActivities).length) {
       const questionIds = Object.keys(soActivities).join(';');
-      const timelineURL = `${config.so.apiBaseURL}/questions/${questionIds}/timeline?site=stackoverflow`;
+      let timelineURL = `${config.so.apiBaseURL}/questions/${questionIds}/timeline?site=stackoverflow`;
+      if (config.so.key) {
+        timelineURL += `&key=${config.so.key}`
+      }
       getJSON(timelineURL, (timeline) => pTimeline(timeline, soActivities), handleError);
     }
   }
