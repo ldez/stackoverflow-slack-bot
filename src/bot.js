@@ -6,7 +6,11 @@ const config = require('../config');
 const entities = new Entities();
 
 
-const questionURL = `${config.so.apiBaseURL}/questions?order=desc&sort=activity&tagged=${encodeURIComponent(config.tags)}&site=stackoverflow`;
+let questionURL = `${config.so.apiBaseURL}/questions?order=desc&sort=activity&tagged=${encodeURIComponent(config.tags)}&site=stackoverflow`;
+
+if (config.so.key) {
+  questionURL += `&key=${config.so.key}`;
+}
 
 module.exports = function start() {
   const currentTime = Math.round(Date.now() / 1000);

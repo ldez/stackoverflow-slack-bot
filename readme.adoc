@@ -32,6 +32,7 @@ image::https://cloud.githubusercontent.com/assets/5674651/25589901/a3124e4a-2eae
   "tags": "tag1;tag2",
   "so": {
     "apiBaseURL": "https://api.stackexchange.com/2.2",
+    "key": "[optional: your StackApps key, for a higher request quota]",
     "dayBack": 1,
     "hourBack": 0,
     "minuteBack": 0
@@ -64,6 +65,7 @@ so.apiBaseURL:: URL of the StackOverflow API.
 so.minuteBack:: number of minutes previous now, use for create the first query.
 so.hourBack:: number of hours previous now, use for create the first query.
 so.dayBack:: number of days previous now, use for create the first query.
+so.key:: an API key from https://stackapps.com/apps/oauth/register/submit to increase your per-day quota from 300 to 10000
 slack.apiBaseUrl:: URL of Slack API.
 slack.token:: Slack token, only for dev purpose. DON'T USE IN PRODUCTION.
 slack.channel:: Name of the channel to publish. (must start with `#`)
