@@ -96,7 +96,10 @@ module.exports = function start() {
 
   function processAnswers(soActivities, checkQuestions) {
     const questionIds = Object.keys(checkQuestions).join(';');
-    const answerURL = `${config.so.apiBaseURL}/questions/${questionIds}/answers?fromdate=${lastTime}&todate=${currentTime}&order=desc&sort=activity&site=stackoverflow`;
+    let answerURL = `${config.so.apiBaseURL}/questions/${questionIds}/answers?fromdate=${lastTime}&todate=${currentTime}&order=desc&sort=activity&site=stackoverflow`;
+    if (config.so.key) {
+      answerURL += `&key=${config.so.key}`
+    }
     getJSON(answerURL, (answers) => pAnswers(answers, soActivities, checkQuestions), handleError);
   }
 
